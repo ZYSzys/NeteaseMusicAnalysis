@@ -27,7 +27,7 @@ def CatchPlaylist(url):
 	except Exception:
 		print traceback.print_exc()
 	finally:
-		driver.quit()
+		print 'CatchPlaylist Done'
 	return favorite_url
 
 def CatchSongs(url_id, url):
@@ -47,17 +47,17 @@ def CatchSongs(url_id, url):
 			while song_key <= max_song:
 				songs = driver.find_elements_by_xpath('//*[@class="j-flag"]/table/tbody/tr[%s]/td[4]/div/span'%song_key)
 				singer = songs[0].get_attribute('title')
-				print song_key, singer.encode('utf-8')
+				#print song_key, singer.encode('utf-8')
 				WriteData(singer.encode('utf-8'))
 				song_key += 1
-			driver.quit()
 		except Exception:
 			print 'No more music'
-			pass
 	except Exception:
 		traceback.print_exc()
+	finally:
+		driver.quit()
+		print 'CatchSongs Done'
 		
-
 if __name__ == '__main__':
 	for url in ['http://music.163.com/#/user/home?id=339449788']:
 		time.sleep(random.randint(2, 4))
