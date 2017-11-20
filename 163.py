@@ -32,7 +32,7 @@ def CatchPlaylist(url):
 
 def CatchSongs(url_id, url):
 	user = url_id.split('=')[-1].strip()
-	print user+': '
+	print 'Your ID is: ' + user
 
 	driver = webdriver.PhantomJS()
 	driver.get(url)
@@ -59,11 +59,11 @@ def CatchSongs(url_id, url):
 		print 'CatchSongs Done'
 		
 if __name__ == '__main__':
-	for url in ['http://music.163.com/#/user/home?id=339449788']:
-		time.sleep(random.randint(2, 4))
-		url_playlist = CatchPlaylist(url)
+	url = str(raw_input("Input the personal homepage of NeteaseMusic(such as http://music.163.com/#/user/home?id=339449788): "))
+	time.sleep(random.randint(2, 4))
+	url_playlist = CatchPlaylist(url)
 		
-		time.sleep(random.randint(1, 2))
-		CatchSongs(url, url_playlist)
+	time.sleep(random.randint(1, 2))
+	CatchSongs(url, url_playlist)
 
 
